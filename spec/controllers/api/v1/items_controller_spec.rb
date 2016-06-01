@@ -49,6 +49,31 @@ describe Api::V1::ItemsController do
   it "DELETE#destroy" do
     item = Item.last
     expect{ delete :destroy, id: item.id, format: :json }.to change{ Item.count }.by(-1)
-    # expect{ User.from_omniauth(@auth_hash) }.to change{ User.all.size }.from(0).to(1)
   end
+
+  it "GET#find" do
+    it = Item.last
+    get :find, item: {name: it.name}, format: :json
+    item = JSON.parse(response.body)
+    expect(response).to be_success
+    expect(item["name"]).to eq it.name
+  end
+
+  it "GET#find - case insensitive" do
+    it = Item.last
+    upcased = it.name.upcase
+    get :find, item: {name: upcased}, format: :json
+    item = JSON.parse(response.body)
+    expect(response).to be_success
+    expect(item["name"]).to eq it.name
+  end
+
+  it "GET#find_all" do
+    it = Item.last
+    get :find_all, item: {name: it.name}, format: :json
+    item = JSON.parse(response.body)
+    expect(item.count).to eq 1
+    expect(item.class).to eq Array
+  end
+
 end
