@@ -1,4 +1,5 @@
 require "rails_helper"
+
 describe "merchant-items API" do
   describe "GET merchant/id/items" do
     it "returns all the items" do

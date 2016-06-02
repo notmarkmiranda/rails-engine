@@ -14,6 +14,7 @@ gem 'active_model_serializers', github: "rails-api/active_model_serializers"
 
 group :development, :test do
   gem 'pry'
+  gem 'table_print'
 end
 
 group :development do

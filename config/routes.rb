@@ -7,6 +7,10 @@ Rails.application.routes.draw do
           get "/find", to: "items#find"
           get "/find_all", to: "items#find_all"
           get "/random", to: "items#random"
+          scope module: "items" do
+            get "/most_revenue", to: "most_revenue#index"
+            get "/most_items", to: "most_items#index"
+          end
         end
         scope module: "items" do
           member do
@@ -21,11 +25,17 @@ Rails.application.routes.draw do
           get "/find", to: "merchants#find"
           get "/find_all", to: "merchants#find_all"
           get "/random", to: "merchants#random"
+          scope module: "merchants" do
+            get "/most_revenue", to: "most_revenue#index"
+            get "/most_items", to: "most_items#index"
+          end
         end
-        scope module: "merchants" do
-          member do
-            get "/items", to: "items#index"
-            get "/invoices", to: "invoices#index"
+          scope module: "merchants" do
+            member do
+              get "/items", to: "items#index"
+              get "/invoices", to: "invoices#index"
+              get "/revenue", to: "revenue#show"
+              get "/favorite_customer", to: "favorite_customer#show"
           end
         end
       end
@@ -40,6 +50,7 @@ Rails.application.routes.draw do
           member do
             get "/invoices", to: "invoices#index"
             get "/transactions", to: "transactions#index"
+            get "/favorite_merchant", to: "favorite_merchant#show"
           end
         end
       end

@@ -4,7 +4,7 @@ module Api
       respond_to :json
 
       def index
-        respond_with Customer.find_by(id: params[:id]).transactions
+        respond_with Customer.find(params[:id]).transactions
       end
     end
   end

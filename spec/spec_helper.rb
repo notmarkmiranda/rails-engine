@@ -79,13 +79,13 @@ def create_transactions(num = 1, x = 1)
     Transaction.create(invoice_id: Random.new.rand(first..last),
                        credit_card_number: "4242424242424242",
                        credit_card_exp: "05/18",
-                       result: "sure")
+                       result: "success")
   end
 end
 
-def create_invoice_items(num = 1, x = 1)
-  create_invoices(x)
-  create_items_with_x_merchants(1)
+def create_invoice_items(num = 1, x = 1, y = 1, z = 1, a = 1)
+  create_invoices(x, a)
+  create_items_with_x_merchants(y, z)
   a = Random.new
   f_item, l_item = Item.first.id, Item.last.id
   f_invoice, l_invoice = Invoice.first.id, Invoice.last.id
@@ -95,4 +95,11 @@ def create_invoice_items(num = 1, x = 1)
                        quantity: a.rand(1..10),
                        unit_price: a.rand(100..25000))
   end
+end
+
+def create_full_data
+  create_customers(5)
+  create_items_with_x_merchants(50, 5)
+  create_transactions(50, 50)
+  create_invoice_items(100, 0, 0, 0, 0)
 end
