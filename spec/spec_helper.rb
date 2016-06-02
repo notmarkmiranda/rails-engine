@@ -56,11 +56,11 @@ def create_items_with_x_merchants(num = 1, x = 1)
   end
 end
 
-def create_invoices(num = 1)
-  create_merchants(5)
+def create_invoices(num = 1, x = 1)
+  create_merchants(x)
   fmid = Merchant.first.id
   lmid = Merchant.last.id
-  create_customers(5)
+  create_customers(x)
   fcid = Customer.first.id
   lcid = Customer.last.id
   num.times do
@@ -85,7 +85,7 @@ end
 
 def create_invoice_items(num = 1, x = 1)
   create_invoices(x)
-  create_items_with_x_merchants(5)
+  create_items_with_x_merchants(1)
   a = Random.new
   f_item, l_item = Item.first.id, Item.last.id
   f_invoice, l_invoice = Invoice.first.id, Invoice.last.id
