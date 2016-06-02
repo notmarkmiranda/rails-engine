@@ -24,7 +24,7 @@ describe Api::V1::InvoiceItemsController do
   it "GET#find - one invoice_item by id" do
     ii = InvoiceItem.last
     id = ii.id
-    get :find, invoice_item: {id: id}, format: :json
+    get :find, id: id, format: :json
     invoice_item = JSON.parse(response.body)
     expect(response).to be_success
     expect(invoice_item["id"]).to eq id
@@ -32,9 +32,16 @@ describe Api::V1::InvoiceItemsController do
 
   it "GET#find_all" do
     ii = InvoiceItem.last
-    get :find_all, invoice_item: {id: ii.id}, format: :json
+    get :find_all, id: ii.id, format: :json
     invoice_item = JSON.parse(response.body)
     expect(invoice_item.count).to eq 1
     expect(invoice_item.class).to eq Array
+  end
+
+  it "GET#random" do
+    get :random, format: :json
+    invoice_item = JSON.parse(response.body)
+    expect(response).to be_success
+    expect(invoice_item.class).to eq Hash
   end
 end

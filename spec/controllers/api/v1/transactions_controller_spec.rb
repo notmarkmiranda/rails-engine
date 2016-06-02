@@ -24,7 +24,7 @@ describe Api::V1::TransactionsController do
   it "GET#find - one transaction by id" do
     trans = Transaction.last
     id = trans.id
-    get :find, transaction: {id: id}, format: :json
+    get :find, id: id, format: :json
     transaction = JSON.parse(response.body)
     expect(response).to be_success
     expect(transaction["id"]).to eq id
@@ -32,9 +32,17 @@ describe Api::V1::TransactionsController do
 
   it "GET#find_all" do
     trans = Transaction.last
-    get :find_all, transaction: {id: trans.id}, format: :json
+    id = trans.id
+    get :find_all, id: id, format: :json
     transaction = JSON.parse(response.body)
     expect(transaction.count).to eq 1
     expect(transaction.class).to eq Array
+  end
+
+  it "GET#random" do
+    get :random, format: :json
+    transaction = JSON.parse(response.body)
+    expect(response).to be_success
+    expect(transaction.class).to eq Hash
   end
 end

@@ -3,32 +3,14 @@ class Api::ApiController < ApplicationController
   # but can change definitions
   # protect from forgery
   protect_from_forgery with: :null_session
-  def index
-    respond_with model.all
-  end
+  before_action :change_currency
 
-  def show
-    respond_with model.find_by(id: params[:id])
-  end
+  private
 
-  def create
-    respond_with model.create(s_params), location: nil
-  end
-
-  def update
-    respond_with model.update(params[:id], s_params), location: nil
-  end
-
-  def destroy
-    respond_with model.delete(params[:id])
-  end
-
-  def find
-    respond_with model.find_by(s_params)
-  end
-
-  def find_all
-    respond_with model.where(s_params)
+  def change_currency
+    if params[:unit_price]
+      params[:unit_price] = (params[:unit_price].to_f * 100).round
+    end
   end
 
 end
