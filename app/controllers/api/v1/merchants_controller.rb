@@ -2,22 +2,11 @@ module Api
   module V1
     class MerchantsController < ApiController
       include ApiMethods
-
       respond_to :json
 
       def model
         Merchant
       end
-
-
-      # user subdirectories
-      # def items
-      #   respond_with model.find(params[:id]).items
-      # end
-      #
-      # def invoices
-      #   respond_with model.find(params[:id]).invoices
-      # end
 
       private
 

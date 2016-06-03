@@ -5,7 +5,7 @@ This was a project that was assigned over four days in Week 4 of Module 3 at the
 This repository can be cloned down and ran with:
 ``` bash
 git clone https://github.com/notmarkmiranda/rails-engine.git
-cd rails_engine
+cd rails-engine
 bundle
 rake db:drop db:create db:migrate
 rake all

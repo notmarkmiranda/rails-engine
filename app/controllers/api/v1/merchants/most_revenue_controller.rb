@@ -6,6 +6,7 @@ module Api
       def index
         respond_with Merchant.ranked_revenue(params[:quantity])
       end
+      
     end
   end
 end

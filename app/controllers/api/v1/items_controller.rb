@@ -2,7 +2,6 @@ module Api
   module V1
     class ItemsController < ApiController
       include ApiMethods
-      # before_action :change_currency
       respond_to :json
 
       def model

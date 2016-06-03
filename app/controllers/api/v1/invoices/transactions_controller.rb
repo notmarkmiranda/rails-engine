@@ -6,6 +6,7 @@ module Api
       def index
         respond_with Invoice.find_by(id: params[:id]).transactions
       end
+      
     end
   end
 end

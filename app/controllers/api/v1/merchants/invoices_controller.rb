@@ -1,7 +1,6 @@
 module Api
   module V1
     class Merchants::InvoicesController < ApiController
-      include ApiMethods
       respond_to :json
 
       def index

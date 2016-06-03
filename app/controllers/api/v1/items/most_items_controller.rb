@@ -6,6 +6,7 @@ module Api
       def index
         respond_with Item.ranked_items_sold(params[:quantity])
       end
+      
     end
   end
 end

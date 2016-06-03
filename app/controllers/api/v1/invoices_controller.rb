@@ -2,7 +2,6 @@ module Api
   module V1
     class InvoicesController < ApiController
       include ApiMethods
-
       respond_to :json
 
       def model

@@ -6,6 +6,7 @@ module Api
       def show
         respond_with Invoice.find_by(id: params[:id]).merchant
       end
+      
     end
   end
 end

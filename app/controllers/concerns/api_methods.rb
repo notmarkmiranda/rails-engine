@@ -1,7 +1,6 @@
 module ApiMethods
   extend ActiveSupport::Concern
 
-
   def index
     respond_with model.all
   end
