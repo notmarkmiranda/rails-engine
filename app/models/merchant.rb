@@ -19,14 +19,10 @@ class Merchant < ActiveRecord::Base
   end
 
   def favorite_customer
-    # require 'pry'; binding.pry
     customers.joins(:transactions)
     .where(transactions: {result: "success"})
     .group(:id).order('count(invoices.merchant_id)DESC')
     .first
   end
 
-  def self.total_revenue(params)
-    # require 'pry'; binding.pry
-  end
 end
